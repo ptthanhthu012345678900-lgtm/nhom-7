@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nhóm 7 — Bộ thủ vật chất &amp; tài chính</title>
+<style>
+:root{
+  --paper:#faf6ef; --ink:#2b2620; --muted:#8a7d6c;
+  --line:#e8dcc8; --accent:#a8781a; --accent-soft:#f5e8c8;
+  --cjk:"Noto Serif CJK SC","Songti SC","PingFang SC","Microsoft YaHei",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+     background:var(--paper);color:var(--ink);line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:24px 18px 56px}
+h1{font-size:.9rem;font-weight:600;margin:0 0 4px;text-align:center;
+   color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+h1 + p{text-align:center;font-size:.8rem;color:var(--muted);margin:0 0 16px}
+
+.stage{background:#fff;border-radius:26px;padding:10px;
+       border:1.5px solid var(--line);overflow:hidden;
+       box-shadow:0 8px 32px rgba(168,120,26,.1)}
+svg#fig{width:100%;height:auto;display:block}
+
+.hotspot{cursor:pointer;outline:none;
+  transform-box:fill-box;transform-origin:center;
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1)}
+.hotspot:hover{transform:scale(1.14)}
+.hotspot circle{
+  fill:url(#spot);stroke:var(--accent);stroke-width:1.8;
+  filter:drop-shadow(0 2px 4px rgba(168,120,26,.4));
+  transition:fill .2s,stroke-width .2s;
+}
+.hotspot .glyph{
+  font-family:var(--cjk);font-size:20px;fill:var(--ink);
+  text-anchor:middle;dominant-baseline:central;
+  pointer-events:none;transition:fill .2s;
+}
+.hotspot.sel{transform:scale(1.14)}
+.hotspot.sel circle{fill:var(--accent);stroke:#6a4a0a;stroke-width:2.5}
+.hotspot.sel .glyph{fill:#fff}
+.hotspot:focus-visible circle{stroke-width:4}
+
+.card{background:#fff;border-radius:26px;border:1.5px solid var(--line);
+      padding:28px 20px 26px;margin-top:14px;text-align:center;min-height:280px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      box-shadow:0 8px 32px rgba(168,120,26,.1)}
+.card .icon{font-size:76px;line-height:1;margin-bottom:12px;
+             filter:drop-shadow(0 4px 10px rgba(0,0,0,.12))}
+.card .glyph{font-family:var(--cjk);font-size:62px;line-height:1;
+             color:var(--accent);margin-bottom:4px}
+.card .variant{font-family:var(--cjk);font-size:.95rem;color:var(--muted);
+               margin-bottom:6px}
+.card .pron{font-size:1.3rem;margin:0 0 2px;letter-spacing:.02em}
+.card .pron .hv{color:var(--muted);margin-left:8px;font-size:1rem;letter-spacing:0}
+.card .meaning{font-size:1.3rem;font-weight:600;margin:0 0 20px;
+               color:var(--accent)}
+.card .examples{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.card .ex{display:flex;flex-direction:column;align-items:center;gap:1px;
+          padding:8px 12px;border-radius:12px;background:#fdfaf5;
+          border:1px solid var(--line);min-width:60px}
+.card .ex .c{font-family:var(--cjk);font-size:26px;line-height:1.15}
+.card .ex .hv{font-size:.7rem;color:var(--muted)}
+.card .ex .m{font-size:.78rem}
+.card .hint{color:var(--muted);font-size:1.1rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>Nhóm 7 — Vật chất &amp; tài chính</h1>
+  <p>Chạm vào một bảo vật</p>
+
+  <section class="stage">
+    <svg id="fig" viewBox="0 0 560 420" role="img" aria-label="Bàn trưng bày bảo vật">
+      <defs>
+        <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f4e2c4"/>
+          <stop offset="100%" stop-color="#dcbe92"/>
+        </linearGradient>
+        <linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c83430"/>
+          <stop offset="100%" stop-color="#7a1818"/>
+        </linearGradient>
+        <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a87438"/>
+          <stop offset="100%" stop-color="#5a3a18"/>
+        </linearGradient>
+        <radialGradient id="jadeG" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#b8dcc0"/>
+          <stop offset="100%" stop-color="#5a9870"/>
+        </radialGradient>
+        <radialGradient id="goldG" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#fff0a0"/>
+          <stop offset="100%" stop-color="#e8a820"/>
+        </radialGradient>
+        <radialGradient id="spot" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#fff"/>
+          <stop offset="100%" stop-color="#f8ecd0"/>
+        </radialGradient>
+        <filter id="blur"><feGaussianBlur stdDeviation="3"/></filter>
+      </defs>
+
+      <!-- tường -->
+      <rect width="560" height="420" fill="url(#wall)"/>
+
+      <!-- lưới hoa văn cửa sổ mờ — trái -->
+      <g opacity="0.14" stroke="#6a4a1a" stroke-width="1.2" fill="none">
+        <line x1="30" y1="30" x2="30" y2="230"/>
+        <line x1="80" y1="30" x2="80" y2="230"/>
+        <line x1="130" y1="30" x2="130" y2="230"/>
+        <line x1="30" y1="60" x2="130" y2="60"/>
+        <line x1="30" y1="110" x2="130" y2="110"/>
+        <line x1="30" y1="160" x2="130" y2="160"/>
+        <line x1="30" y1="210" x2="130" y2="210"/>
+      </g>
+
+      <!-- lưới hoa văn cửa sổ mờ — phải -->
+      <g opacity="0.14" stroke="#6a4a1a" stroke-width="1.2" fill="none">
+        <line x1="440" y1="30" x2="440" y2="230"/>
+        <line x1="490" y1="30" x2="490" y2="230"/>
+        <line x1="540" y1="30" x2="540" y2="230"/>
+        <line x1="440" y1="60" x2="540" y2="60"/>
+        <line x1="440" y1="110" x2="540" y2="110"/>
+        <line x1="440" y1="160" x2="540" y2="160"/>
+        <line x1="440" y1="210" x2="540" y2="210"/>
+      </g>
+
+      <!-- con dấu đỏ trên tường -->
+      <g transform="translate(280, 70)">
+        <rect x="-18" y="-18" width="36" height="36" fill="#c83030" rx="3"/>
+        <text x="0" y="4" font-family="serif" font-size="22" fill="#fff"
+              text-anchor="middle" font-weight="bold">寶</text>
+      </g>
+
+      <!-- ===== MẶT BÀN ===== -->
+      <!-- mặt gỗ phía sau -->
+      <rect x="0" y="280" width="560" height="16" fill="url(#wood)"/>
+      <line x1="0" y1="288" x2="560" y2="288" stroke="#3a2010" stroke-width="1" opacity="0.5"/>
+
+      <!-- khăn đỏ phủ -->
+      <path d="M 0 296 L 560 296 L 560 420 L 0 420 Z" fill="url(#cloth)"/>
+      <!-- nếp gấp khăn -->
+      <path d="M 120 296 Q 130 350 140 420" stroke="#5a0f0f" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M 300 296 Q 310 360 305 420" stroke="#5a0f0f" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M 460 296 Q 465 350 455 420" stroke="#5a0f0f" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <!-- viền thêu vàng -->
+      <line x1="0" y1="308" x2="560" y2="308" stroke="#d8b840" stroke-width="1.5" opacity="0.7"/>
+      <path d="M 20 320 L 40 320 M 60 320 L 80 320 M 100 320 L 120 320" stroke="#d8b840" stroke-width="1" opacity="0.5"/>
+
+      <!-- ===== 糸: cuộn tơ xanh ===== -->
+      <g id="silk">
+        <!-- bóng -->
+        <ellipse cx="100" cy="296" rx="22" ry="4" fill="#3a0a0a" opacity="0.4"/>
+        <!-- đế gỗ -->
+        <ellipse cx="100" cy="286" rx="19" ry="5" fill="#8a5a30"/>
+        <ellipse cx="100" cy="286" rx="19" ry="5" fill="none" stroke="#5a3a18" stroke-width="1"/>
+        <!-- thân tơ -->
+        <rect x="82" y="240" width="36" height="46" fill="#5ab0c8" rx="2"/>
+        <!-- sợi tơ quấn -->
+        <line x1="82" y1="245" x2="118" y2="245" stroke="#3a90a8" stroke-width="1.3" opacity="0.65"/>
+        <line x1="82" y1="251" x2="118" y2="251" stroke="#3a90a8" stroke-width="1.3" opacity="0.65"/>
+        <line x1="82" y1="257" x2="118" y2="257" stroke="#3a90a8" stroke-width="1.3" opacity="0.65"/>
+        <line x1="82" y1="263" x2="118" y2="263" stroke="#3a90a8" stroke-width="1.3" opacity="0.65"/>
+        <line x1="82" y1="269" x2="118" y2="269" stroke="#3a90a8" stroke-width="1.3" opacity="0.65"/>
+        <line x1="82" y1="275" x2="118" y2="275" stroke="#3a90a8" stroke-width="1.3" opacity="0.65"/>
+        <line x1="82" y1="281" x2="118" y2="281" stroke="#3a90a8" stroke-width="1.3" opacity="0.65"/>
+        <!-- highlight -->
+        <rect x="86" y="242" width="4" height="44" fill="#a8e0f0" opacity="0.55"/>
+        <!-- đĩa gỗ trên -->
+        <ellipse cx="100" cy="240" rx="19" ry="5" fill="#a87038"/>
+        <ellipse cx="100" cy="240" rx="19" ry="5" fill="none" stroke="#5a3a18" stroke-width="1"/>
+        <!-- sợi tơ buông -->
+        <path d="M 118 268 Q 138 275 132 288 Q 128 296 142 298"
+              stroke="#5ab0c8" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- ===== 金: thỏi vàng + tiền xu ===== -->
+      <g id="gold">
+        <!-- bóng -->
+        <ellipse cx="230" cy="296" rx="52" ry="5" fill="#3a0a0a" opacity="0.4"/>
+
+        <!-- thỏi vàng (nguyên bảo) -->
+        <path d="M 205 286 Q 205 275 213 268 Q 222 262 230 262 Q 238 262 247 268 Q 255 275 255 286 Z"
+              fill="url(#goldG)" stroke="#a87820" stroke-width="1.5"/>
+        <ellipse cx="230" cy="286" rx="25" ry="4" fill="#c89628"/>
+        <!-- chỏm thỏi -->
+        <ellipse cx="230" cy="268" rx="13" ry="6" fill="#fff0a0"/>
+        <ellipse cx="230" cy="268" rx="13" ry="6" fill="none" stroke="#a87820" stroke-width="1"/>
+        <!-- highlight thỏi -->
+        <path d="M 215 278 Q 220 270 228 268" stroke="#fffce0" stroke-width="1.5" fill="none" opacity="0.7"/>
+
+        <!-- xu trái -->
+        <circle cx="192" cy="286" r="10" fill="#ffd23f" stroke="#b88000" stroke-width="1.5"/>
+        <rect x="187" y="281" width="10" height="10" fill="#b88000"/>
+
+        <!-- xu phải -->
+        <circle cx="268" cy="288" r="9" fill="#ffd23f" stroke="#b88000" stroke-width="1.5"/>
+        <rect x="263" y="283" width="10" height="10" fill="#b88000"/>
+
+        <!-- xu dưới phải -->
+        <circle cx="252" cy="294" r="7" fill="#ffd23f" stroke="#b88000" stroke-width="1.3"/>
+        <rect x="248" y="290" width="8" height="8" fill="#b88000"/>
+      </g>
+
+      <!-- ===== 玉: đĩa ngọc bích ===== -->
+      <g id="jade">
+        <!-- bóng -->
+        <ellipse cx="360" cy="296" rx="42" ry="6" fill="#3a0a0a" opacity="0.4"/>
+        <!-- đế đỡ (giá gỗ) -->
+        <path d="M 335 296 L 385 296 L 380 286 L 340 286 Z" fill="#5a3a18"/>
+        <line x1="360" y1="286" x2="360" y2="296" stroke="#3a2010" stroke-width="1" opacity="0.5"/>
+
+        <!-- đĩa ngọc -->
+        <circle cx="360" cy="245" r="42" fill="url(#jadeG)" stroke="#3a7858" stroke-width="2"/>
+        <circle cx="360" cy="245" r="34" fill="#a8d0b0" opacity="0.6"/>
+        <circle cx="360" cy="245" r="34" fill="none" stroke="#3a7858" stroke-width="1"/>
+        <!-- lỗ giữa -->
+        <circle cx="360" cy="245" r="13" fill="url(#cloth)"/>
+        <circle cx="360" cy="245" r="13" fill="none" stroke="#3a7858" stroke-width="1.5"/>
+        <!-- highlight -->
+        <path d="M 335 220 Q 330 235 332 250" stroke="#fff" stroke-width="2.5" fill="none"
+              opacity="0.55" stroke-linecap="round"/>
+        <!-- vân mây chạm khắc -->
+        <path d="M 340 260 Q 348 256 355 262 Q 362 268 370 262"
+              stroke="#3a7858" stroke-width="1" fill="none" opacity="0.55"/>
+        <path d="M 375 230 Q 382 226 380 232 Q 378 238 384 240"
+              stroke="#3a7858" stroke-width="1" fill="none" opacity="0.55"/>
+      </g>
+
+      <!-- ===== 贝: vỏ sò ===== -->
+      <g id="shell">
+        <!-- bóng -->
+        <ellipse cx="475" cy="296" rx="26" ry="5" fill="#3a0a0a" opacity="0.4"/>
+        <!-- thân vỏ -->
+        <ellipse cx="475" cy="265" rx="22" ry="30" fill="#f0d8a8" stroke="#a87848" stroke-width="1.5"/>
+        <!-- rãnh giữa -->
+        <path d="M 473 237 Q 477 245 475 265 Q 473 285 477 293"
+              stroke="#a87848" stroke-width="2.2" fill="none"/>
+        <!-- răng cưa -->
+        <line x1="465" y1="245" x2="471" y2="246" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="464" y1="252" x2="471" y2="253" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="464" y1="260" x2="471" y2="260" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="464" y1="268" x2="471" y2="268" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="464" y1="276" x2="471" y2="275" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="465" y1="283" x2="471" y2="282" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="485" y1="245" x2="479" y2="246" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="486" y1="252" x2="479" y2="253" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="486" y1="260" x2="479" y2="260" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="486" y1="268" x2="479" y2="268" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="486" y1="276" x2="479" y2="275" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <line x1="485" y1="283" x2="479" y2="282" stroke="#a87848" stroke-width="1.2" opacity="0.75"/>
+        <!-- highlight -->
+        <path d="M 461 250 Q 458 265 461 282" stroke="#fff" stroke-width="2.5" fill="none"
+              opacity="0.45" stroke-linecap="round"/>
+      </g>
+
+      <g id="hotspots"></g>
+    </svg>
+  </section>
+
+  <section class="card" id="card"></section>
+</main>
+
+<script>
+const NS = "http://www.w3.org/2000/svg";
+
+/* ==== 4 bộ thủ vật chất & tài chính (giản thể) ==== */
+const RADICALS = {
+  jin: {glyph:"金", variant:"钅", pinyin:"jīn", hv:"kim",   meaning:"kim loại, tiền", icon:"🪙",
+        ex:[{c:"钱",hv:"tiền",m:"tiền"},{c:"银",hv:"ngân",m:"bạc"},{c:"铁",hv:"thiết",m:"sắt"}]},
+  yu:  {glyph:"玉", variant:"王", pinyin:"yù",  hv:"ngọc",  meaning:"ngọc",           icon:"💎",
+        ex:[{c:"玩",hv:"ngoạn",m:"chơi"},{c:"珠",hv:"châu",m:"ngọc trai"},{c:"珍",hv:"trân",m:"quý"}]},
+  bei: {glyph:"贝", variant:"", pinyin:"bèi", hv:"bối",   meaning:"tiền, vỏ sò",    icon:"🐚",
+        ex:[{c:"买",hv:"mãi",m:"mua"},{c:"贵",hv:"quý",m:"đắt"},{c:"财",hv:"tài",m:"của cải"}]},
+  mi:  {glyph:"糸", variant:"纟", pinyin:"mì",  hv:"mịch",  meaning:"sợi, tơ",        icon:"🧵",
+        ex:[{c:"红",hv:"hồng",m:"đỏ"},{c:"纸",hv:"chỉ",m:"giấy"},{c:"绿",hv:"lục",m:"xanh"}]}
+};
+
+/* ==== vị trí hotspot ==== */
+const SPOTS = [
+  {id:"mi",  x:100, y:262, r:16},   /* cuộn tơ */
+  {id:"jin", x:230, y:278, r:18},   /* thỏi vàng + xu */
+  {id:"yu",  x:360, y:245, r:18},   /* đĩa ngọc */
+  {id:"bei", x:475, y:265, r:16}    /* vỏ sò */
+];
+
+const panel    = document.getElementById("card");
+const svgSpots = document.getElementById("hotspots");
+
+SPOTS.forEach(s => {
+  const r = RADICALS[s.id];
+  const g = document.createElementNS(NS,"g");
+  g.setAttribute("class","hotspot");
+  g.setAttribute("tabindex","0");
+  g.setAttribute("role","button");
+  g.setAttribute("aria-label", r.pinyin + " " + r.hv);
+  g.dataset.id = s.id;
+
+  const c = document.createElementNS(NS,"circle");
+  c.setAttribute("cx",s.x); c.setAttribute("cy",s.y); c.setAttribute("r",s.r);
+
+  const t = document.createElementNS(NS,"text");
+  t.setAttribute("class","glyph");
+  t.setAttribute("x",s.x); t.setAttribute("y",s.y);
+  t.textContent = r.glyph;
+
+  g.append(c,t);
+  g.addEventListener("click", () => select(s.id));
+  g.addEventListener("keydown", e => {
+    if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(s.id); }
+  });
+  svgSpots.appendChild(g);
+});
+
+function select(id){
+  document.querySelectorAll(".hotspot").forEach(el =>
+    el.classList.toggle("sel", el.dataset.id === id));
+  renderCard(id);
+}
+
+function renderCard(id){
+  const r = RADICALS[id];
+  panel.innerHTML = `
+    <div class="icon">${r.icon}</div>
+    <div class="glyph">${r.glyph}</div>
+    ${r.variant ? `<div class="variant">biến thể: ${r.variant}</div>` : ""}
+    <p class="pron">${r.pinyin}<span class="hv">· ${r.hv}</span></p>
+    <p class="meaning">${r.meaning}</p>
+    <div class="examples">
+      ${r.ex.map(x => `
+        <div class="ex">
+          <span class="c">${x.c}</span>
+          <span class="hv">${x.hv}</span>
+          <span class="m">${x.m}</span>
+        </div>`).join("")}
+    </div>`;
+}
+
+panel.innerHTML = `<p class="hint">👆 Chạm vào một bảo vật</p>`;
+</script>
+</body>
+</html>
